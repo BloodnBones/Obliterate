@@ -55,7 +55,7 @@ public class GravityCalc : MonoBehaviour {
         if (collision.gameObject.tag == "Planet")
         {
           //  Debug.Log(collision.gameObject.tag);
-            Destroy(this.gameObject);
+          //  Destroy(this.gameObject);
         }
        
     }
