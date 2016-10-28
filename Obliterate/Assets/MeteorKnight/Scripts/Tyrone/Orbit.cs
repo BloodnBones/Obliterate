@@ -22,10 +22,10 @@ public class Orbit : MonoBehaviour {
     void FixedUpdate()
     {
         //tyrone scene
-        //transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), orbitSpeed * Time.deltaTime);
+        transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), orbitSpeed * Time.deltaTime);
 
         //gabe scene
-        transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
+        //transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
     }
 
    public float GetMass()

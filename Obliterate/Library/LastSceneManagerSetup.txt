@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MeteorKnight/Scenes/TestScene.unity
+- path: Assets/MeteorKnight/Scenes/TyroneTest.unity
   isLoaded: 1
   isActive: 1

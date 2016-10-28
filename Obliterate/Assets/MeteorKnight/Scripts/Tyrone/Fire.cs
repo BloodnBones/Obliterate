@@ -10,6 +10,7 @@ public class Fire : MonoBehaviour
     public float rotateSpeed;
     public float fireForce;
     public float fireRate;
+    float lastShot = 4.0f;
     // Use this for initialization
     void Start()
     {
@@ -19,9 +20,10 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && lastShot > fireRate)
         {
             Shoot();
+            lastShot = 0.0f;
         }
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -32,6 +34,7 @@ public class Fire : MonoBehaviour
             //Debug.Log("")
             transform.Rotate(new Vector3(0, 0, -1) * rotateSpeed);
         }
+        lastShot += Time.deltaTime;
     }
 
     void Shoot()
