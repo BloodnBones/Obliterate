@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Orbit : MonoBehaviour {
 
@@ -21,11 +22,18 @@ public class Orbit : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //tyrone scene
-        transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), orbitSpeed * Time.deltaTime);
+        
 
         //gabe scene
-        //transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
+        if (SceneManager.GetActiveScene().name == "TestScene")
+        {
+            transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
+        }
+        else
+        {
+            //tyrone scene
+            transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), orbitSpeed * Time.deltaTime);
+        }
     }
 
    public float GetMass()

@@ -4,7 +4,7 @@ using System.Collections;
 public class Dynamic_Follow : MonoBehaviour
 {
     //shooting
-    GameObject bullet;
+    public GameObject bullet;
     public GameObject parent;
     public float xoffset;
     public float yoffset;
@@ -35,15 +35,20 @@ public class Dynamic_Follow : MonoBehaviour
     void Start()
     {
         initialRotation = transform.rotation;
-       // Height = transform.position.y;
+       
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         //check to see if there is an asteroid belt
         if (parent.GetComponent<shooter>() != null)
         {
+            if (!parent.GetComponent<shooter>().hasShot)
+            {
+                bullet = null;
+            }
             shootingFollow();
             idleRotation();
 
@@ -52,7 +57,7 @@ public class Dynamic_Follow : MonoBehaviour
 
     void shootingFollow()
     {
-        if (parent.GetComponent<shooter>().hasShot)
+        if (parent.GetComponent<shooter>().hasShot && bullet == null)
         {
             xoffset = Input.mousePosition.x * 0.001f;
 
@@ -62,7 +67,7 @@ public class Dynamic_Follow : MonoBehaviour
             }
             bullet = GameObject.FindGameObjectWithTag("shot");
             Vector3 NewPos = bullet.transform.position;
-            NewPos.z += zoffset;
+            NewPos.z += -200;
             NewPos.x += xoffset;
             NewPos.y += yoffset;
             transform.position = Vector3.Slerp(transform.position, NewPos, speed);
@@ -113,13 +118,7 @@ public class Dynamic_Follow : MonoBehaviour
                 curr.eulerAngles += new Vector3(pitch, yaw, 0.0f);
                 transform.rotation = curr;
             }
-            else
-            {
-                Quaternion curr = transform.rotation;
-                transform.rotation = Quaternion.Slerp(curr, initialRotation, Time.deltaTime);
-            }
-
-
+ 
             Height += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
             Height = Mathf.Clamp(Height, heightMin, heightMax);
             Vector3 NewPos = transform.position;
