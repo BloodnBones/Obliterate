@@ -5,6 +5,7 @@ public class Dynamic_Follow : MonoBehaviour
 {
     //shooting
     public GameObject bullet;
+    public GameObject[] shot;
     public GameObject parent;
     public float xoffset;
     public float yoffset;
@@ -49,6 +50,7 @@ public class Dynamic_Follow : MonoBehaviour
             {
                 bullet = null;
             }
+  
             shootingFollow();
             idleRotation();
 
@@ -57,17 +59,22 @@ public class Dynamic_Follow : MonoBehaviour
 
     void shootingFollow()
     {
-        if (parent.GetComponent<shooter>().hasShot && bullet == null)
+        if (parent.GetComponent<shooter>().hasShot)
         {
+            shot = null;
+            bullet = null;
+            shot = GameObject.FindGameObjectsWithTag("shot");
+            bullet = shot[0];
             xoffset = Input.mousePosition.x * 0.001f;
 
             if (zoffset > 5.0f)
             {
                 zoffset -= Time.deltaTime;
             }
-            bullet = GameObject.FindGameObjectWithTag("shot");
+            
+            
             Vector3 NewPos = bullet.transform.position;
-            NewPos.z += -200;
+            NewPos.z -= 50;
             NewPos.x += xoffset;
             NewPos.y += yoffset;
             transform.position = Vector3.Slerp(transform.position, NewPos, speed);

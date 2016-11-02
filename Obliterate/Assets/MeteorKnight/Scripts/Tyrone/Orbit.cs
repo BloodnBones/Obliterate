@@ -22,17 +22,19 @@ public class Orbit : MonoBehaviour {
 
     void FixedUpdate()
     {
-        
 
-        //gabe scene
-        if (SceneManager.GetActiveScene().name == "TestScene")
+
+        //tyrone scene
+        if (SceneManager.GetActiveScene().name == "TyroneTest")
         {
-            transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
+            transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), orbitSpeed * Time.deltaTime);
         }
         else
         {
-            //tyrone scene
-            transform.RotateAround(transform.parent.position, new Vector3(0, 0, 1), orbitSpeed * Time.deltaTime);
+            //gabe scene
+            
+            transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
+         
         }
     }
 
