@@ -13,6 +13,9 @@ public class Dynamic_Follow : MonoBehaviour
     public float originaly;
     public float speed;
 
+    //Camera Rotation stuff
+    public GameObject Sun;
+    public float LookAtOffset;
 
     //idle
     private float speedH = 0.05f;
@@ -31,12 +34,14 @@ public class Dynamic_Follow : MonoBehaviour
     float scrollSpeed = 500f;
     public float Height = 0;
 
+    public Vector3 initialPosition;
     Quaternion initialRotation;
     // Use this for initialization
     void Start()
     {
         initialRotation = transform.rotation;
-       
+        initialPosition = transform.position;
+
     }
 
     // Update is called once per frame
@@ -87,7 +92,7 @@ public class Dynamic_Follow : MonoBehaviour
             NewPos.z += zoffset;
             NewPos.x += xoffset;
             NewPos.y += originaly;
-            transform.position = Vector3.Slerp(transform.position, NewPos, speed);
+            transform.position = Vector3.Slerp(transform.position, transform.parent.position, speed);
         }
 
     }
@@ -96,6 +101,7 @@ public class Dynamic_Follow : MonoBehaviour
     {
         if (!parent.GetComponent<shooter>().hasShot)
         {
+            transform.LookAt(Sun.transform.position + (Vector3.down*LookAtOffset));
             if (Input.GetMouseButton(1))
             {
 
@@ -123,14 +129,14 @@ public class Dynamic_Follow : MonoBehaviour
                 }
 
                 curr.eulerAngles += new Vector3(pitch, yaw, 0.0f);
-                transform.rotation = curr;
+              //  transform.rotation = curr;
             }
  
             Height += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
             Height = Mathf.Clamp(Height, heightMin, heightMax);
             Vector3 NewPos = transform.position;
             NewPos.y = Height;
-            transform.position = Vector3.Slerp(transform.position, NewPos, Time.deltaTime *20.0f);
+           // transform.position = Vector3.Slerp(transform.position, NewPos, Time.deltaTime *20.0f);
         }
 
     }

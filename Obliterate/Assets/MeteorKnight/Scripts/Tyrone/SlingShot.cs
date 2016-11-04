@@ -37,6 +37,7 @@ public class SlingShot : MonoBehaviour
     private Vector2 mouse = Vector2.zero;
     private Vector2 MousePos = Vector2.zero;
 
+    private float FollowTimer = 10.0f;
     // Use this for initialization
     void Start()
     {
@@ -45,6 +46,16 @@ public class SlingShot : MonoBehaviour
         spr = child.GetComponent<SpriteRenderer>();
         lerpedAim = Color.white;
         tex = cursorTexture;
+    }
+
+    void Update()
+    {
+        //if(FollowTimer < 0.0f)
+        //{
+        //    this.gameObject.tag = "Lost";
+        //    FollowTimer = 10.0f;
+        //}
+        //FollowTimer -= Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -69,27 +80,27 @@ public class SlingShot : MonoBehaviour
 
     void OnMouseDown()
     {
-
-        if (!parent.GetComponent<shooter>().hasShot)
-        {
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            this.gotClicked = Physics.Raycast(ray, out hit);
-
-            if (Input.GetMouseButtonDown(0) && this.gotClicked)
+            if (!parent.GetComponent<shooter>().hasShot)
             {
-                if (hit.collider.tag == "Asteroid")
-                {                  
-                    startPos = Input.mousePosition;
-                    this.toFire = true;
-                    parent.GetComponent<shooter>().cursorLOCK = true;
+                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                this.gotClicked = Physics.Raycast(ray, out hit);
+
+                if (Input.GetMouseButtonDown(0) && this.gotClicked)
+                {
+                    if (hit.collider.tag == "Asteroid")
+                    {
+                        startPos = Input.mousePosition;
+                        this.toFire = true;
+                        parent.GetComponent<shooter>().cursorLOCK = true;
+                        Cursor.visible = false;
+                    }
                 }
             }
-        }
-        else
-        {
-            this.toFire = false;
-            parent.GetComponent<shooter>().cursorLOCK = false;
-        }
+            else
+            {
+                this.toFire = false;
+                parent.GetComponent<shooter>().cursorLOCK = false;
+            }
     }
 
     public bool GetFired()
@@ -104,7 +115,7 @@ public class SlingShot : MonoBehaviour
             parent.GetComponent<shooter>().hasShot = false;
             Timer = 0;
             gameObject.tag = "idle";
-            Destroy(this.gameObject, 1);
+            Destroy(this.gameObject, 0.2f);
         }
     }
 
@@ -135,7 +146,7 @@ public class SlingShot : MonoBehaviour
                 rotationvec.z = rotationvec.y;
                 rotationvec.y = 0;
 
-                transform.rotation = Quaternion.LookRotation(rotationvec);
+                transform.rotation = Quaternion.LookRotation(rotationvec);                      //Doesnt follow curser when camera rotates, but still points in aimed direction
                 this.transform.position += Temp * Mathf.Sin(Time.time * 10) * 0.02f;
             }
         }
@@ -166,8 +177,10 @@ public class SlingShot : MonoBehaviour
                     //dynamic follow ai
                     gameObject.tag = "shot";
 
+                    //FollowTimer = 10.0f;
+
                     //dynamic destuction (aka levelusion, aka destructable objects) AI
-                    Destroy(this.gameObject, 10);
+                    Destroy(this.gameObject, 10);                       //Change back to 10
                 }
             }
         }
@@ -201,7 +214,7 @@ public class SlingShot : MonoBehaviour
     {
         if (!parent.GetComponent<shooter>().hasShot && !parent.GetComponent<shooter>().cursorLOCK)
         {
-            Debug.Log("we in");
+           // Debug.Log("we in");
             Cursor.visible = false;
             Hover = true;
         }
@@ -217,7 +230,7 @@ public class SlingShot : MonoBehaviour
     {
         if (Hover)
         {
-            Debug.Log("isss lit");
+           // Debug.Log("isss lit");
             GUI.DrawTexture(new Rect(MousePos.x - (w / 2), MousePos.y - (h / 2), w, h), hoverTexture);
         }
     }
