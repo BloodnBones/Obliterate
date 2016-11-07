@@ -22,9 +22,9 @@ public class PauseMenu : MonoBehaviour {
         SceneManager.LoadScene(scene.name);
     }
 
-    public void Main()
+    public void MainMenu()
     {
-        SceneManager.LoadScene("LevelSelectionMenu");
+        SceneManager.LoadScene("LevelSelectScene");
     }
 
 

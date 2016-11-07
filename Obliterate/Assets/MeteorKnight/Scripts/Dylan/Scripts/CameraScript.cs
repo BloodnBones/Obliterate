@@ -22,7 +22,7 @@ public class CameraScript : MonoBehaviour {
     public float CamHeightOffset = 10.0f;
     public float CamZOffset = -10.0f;
 
-    private bool fade = false;
+    public bool fade = false;
 
     private int LevelToLoad = -1;
 
@@ -34,6 +34,7 @@ public class CameraScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         DefaultLocation = transform.position;
+        Time.timeScale = 1;
     }
 	
 	// Update is called once per frame
@@ -75,6 +76,7 @@ public class CameraScript : MonoBehaviour {
             direction.y -= 260.0f;
             Quaternion toRotation = Quaternion.FromToRotation(transform.forward, direction);
             transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, RotationSpeed * Time.deltaTime);
+            fade = false;
         }
 
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
