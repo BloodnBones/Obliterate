@@ -12,6 +12,8 @@ public class DestroyPlanet : MonoBehaviour
     public bool burning = false;
     public float ExplosionRadius;
     float flameDuration;
+
+	public GameObject explosion;	//Temporary particle Trigger
     // Use this for initialization
     void Start()
     {
@@ -55,6 +57,8 @@ public class DestroyPlanet : MonoBehaviour
 
     void destroythis()
     {
+		explosion.gameObject.active = true;	//Temporary particle Trigger
+
         Planets = GameObject.FindGameObjectsWithTag("Planet");          //Find all remaining planets
 
         foreach(GameObject g in Planets)
