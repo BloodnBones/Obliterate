@@ -89,7 +89,8 @@ public class SlingShot : MonoBehaviour
                 {
                     if (hit.collider.tag == "Asteroid")
                     {
-                        startPos = Input.mousePosition;
+                    Hover = false;
+                    startPos = Input.mousePosition;
                         this.toFire = true;
                         parent.GetComponent<shooter>().cursorLOCK = true;
                         Cursor.visible = false;
@@ -114,8 +115,15 @@ public class SlingShot : MonoBehaviour
         {
             parent.GetComponent<shooter>().hasShot = false;
             Timer = 0;
-            gameObject.tag = "idle";
+            //gameObject.tag = "idle";
             Destroy(this.gameObject, 0.2f);
+        }
+        if (collision.gameObject.tag == "Sun")
+        {
+            parent.GetComponent<shooter>().hasShot = false;
+            Timer = 0;
+            gameObject.tag = "idle";
+            Destroy(this.gameObject);
         }
     }
 
@@ -147,7 +155,7 @@ public class SlingShot : MonoBehaviour
                 rotationvec.y = 0;
 
                 transform.rotation = Quaternion.LookRotation(rotationvec);                      //Doesnt follow curser when camera rotates, but still points in aimed direction
-                this.transform.position += Temp * Mathf.Sin(Time.time * 10) * 0.02f;
+               // this.transform.position += Temp * Mathf.Sin(Time.time * 10) * 0.02f;
             }
         }
         if (Input.GetMouseButtonUp(0) && toFire)
@@ -155,6 +163,9 @@ public class SlingShot : MonoBehaviour
 
             if (SceneManager.GetActiveScene().name == "TyroneTest")
             {
+                Cursor.visible = true;
+                tex = cursorTexture;
+                Hover = false;
                 Target = startPos - Input.mousePosition;
                 Target = Target.normalized;
                 this.gameObject.GetComponent<Rigidbody>().AddForce(Target * 500.0f, ForceMode.Impulse);
@@ -165,13 +176,20 @@ public class SlingShot : MonoBehaviour
             {
                 if (!parent.GetComponent<shooter>().hasShot)
                 {
+
+                    Cursor.visible = true;
+                    tex = cursorTexture;
+
+
                     parent.GetComponent<shooter>().hasShot = true;
+                    float Power = Vector3.Distance(startPos, Input.mousePosition);
+                   
                     Timer = 10;
                     Target = startPos - Input.mousePosition;
                     Target.z = Target.y;
                     Target.y = 0;
                     Target = Target.normalized;
-                    this.gameObject.GetComponent<Rigidbody>().AddForce(Target * 500.0f, ForceMode.Impulse);
+                    this.gameObject.GetComponent<Rigidbody>().AddForce(Target * (500.0f * Power), ForceMode.Impulse);
                     Fired = true;
 
                     //dynamic follow ai
@@ -180,7 +198,7 @@ public class SlingShot : MonoBehaviour
                     //FollowTimer = 10.0f;
 
                     //dynamic destuction (aka levelusion, aka destructable objects) AI
-                    Destroy(this.gameObject, 10);                       //Change back to 10
+                    Destroy(this.gameObject, 12);                       //Change back to 10
                 }
             }
         }
@@ -221,9 +239,9 @@ public class SlingShot : MonoBehaviour
     }
     void OnMouseExit()
     {
-        Cursor.visible = true;
-        tex = cursorTexture;
-        Hover = false;
+        //Cursor.visible = true;
+        //tex = cursorTexture;
+        //Hover = false;
     }
 
     void OnGUI()

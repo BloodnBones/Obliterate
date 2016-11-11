@@ -79,6 +79,14 @@ public class Dynamic_Follow : MonoBehaviour
             
             
             Vector3 NewPos = bullet.transform.position;
+            if (bullet.GetComponent<GravityCalc>().Near)
+            {
+                yoffset = 100.0f;
+            }
+            else
+            {
+                yoffset = 300.0f;
+            }
             NewPos.z -= 50;
             NewPos.x += xoffset;
             NewPos.y += yoffset;

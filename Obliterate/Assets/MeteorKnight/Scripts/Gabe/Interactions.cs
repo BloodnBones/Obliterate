@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Interactions : MonoBehaviour {
+
+
 
     public List<GameObject> particles;
     public bool onfire = false;
@@ -30,18 +34,22 @@ public class Interactions : MonoBehaviour {
 
         if (other.gameObject.tag == "Gas")
         {
-            GasGiant();
+            Mixtape();
         }
     }
 
-    void GasGiant()
+    public void Mixtape()
     {
         onfire = true;
-        /*
-         *Gameobject particle; 
-         * Particle = Instatiate(particles[x], transform.position, transform.rotation) as Gameobject;
-         * particle.parent = transform;
-         */
+        foreach (Transform obj in transform)
+        {
+            if(obj.name == "BurningEffects")
+            {
+                obj.gameObject.SetActive(true);
+            }
+        }
+     
+
     }
 
 }

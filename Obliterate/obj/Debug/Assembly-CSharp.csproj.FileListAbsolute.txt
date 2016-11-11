@@ -31,3 +31,36 @@ D:\Users\zvidzai.mug6442\Desktop\Miniproj2\Obliterate\Temp\bin\Debug\UnityEngine
 D:\Users\zvidzai.mug6442\Desktop\Miniproj2\Obliterate\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 D:\Users\zvidzai.mug6442\Desktop\Miniproj2\Obliterate\obj\Debug\Assembly-CSharp.dll
 D:\Users\zvidzai.mug6442\Desktop\Miniproj2\Obliterate\obj\Debug\Assembly-CSharp.pdb
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Assembly-CSharp.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Assembly-CSharp.pdb
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEditor.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Advertisements.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Analytics.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.HoloLens.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Networking.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Purchasing.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.UI.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.VR.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Mono.Cecil.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Unity.SerializationLogic.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Unity.DataContract.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Unity.UNetWeaver.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Unity.CecilTools.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEditor.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Advertisements.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.UI.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Networking.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Analytics.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.HoloLens.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.Purchasing.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\Temp\bin\Debug\UnityEngine.VR.xml
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\obj\Debug\Assembly-CSharp.dll
+E:\Uni\GDV220 - Rapid Games\Obliterate\Obliterate\obj\Debug\Assembly-CSharp.pdb

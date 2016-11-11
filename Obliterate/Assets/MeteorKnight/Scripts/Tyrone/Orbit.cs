@@ -33,7 +33,7 @@ public class Orbit : MonoBehaviour {
         {
             //gabe scene
             
-            transform.RotateAround(transform.parent.position, Vector3.up, orbitSpeed * Time.deltaTime);
+            transform.RotateAround(Sun.transform.position, Vector3.up, orbitSpeed * Time.deltaTime);
          
         }
     }

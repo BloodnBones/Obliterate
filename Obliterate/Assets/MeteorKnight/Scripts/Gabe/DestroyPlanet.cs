@@ -6,7 +6,10 @@ public class DestroyPlanet : MonoBehaviour
 {
 
     GameObject[] Planets;
+    public GameObject Explosion;
+    public List<GameObject> HealthGlows;
     public float HP = 1000;
+    float StartHP;
     public float Onfire = 1;
     public float damageConstant;
     public bool burning = false;
@@ -16,6 +19,13 @@ public class DestroyPlanet : MonoBehaviour
     void Start()
     {
         flameDuration = 5;
+        StartHP = HP;
+       foreach(Transform obj in transform)
+        {
+            HealthGlows.Add(obj.gameObject);
+            obj.gameObject.SetActive(false);
+        }
+       HealthGlows[0].SetActive(true);
     }
 
     // Update is called once per frame
@@ -25,6 +35,20 @@ public class DestroyPlanet : MonoBehaviour
         {
             BurnDmg();
         }
+        if((HP/StartHP) > 0.8f)
+        {
+            HealthGlows[0].SetActive(true);
+        }
+        if ((HP/StartHP) > 0.4f &&( HP / StartHP) < 0.8f)
+        {
+            HealthGlows[0].SetActive(false);
+            HealthGlows[1].SetActive(true);
+        }
+        if((HP / StartHP) < 0.4f)
+        {
+            HealthGlows[1].SetActive(false);
+            HealthGlows[2].SetActive(true);
+        }
         if (HP < 0)
         {
             destroythis();
@@ -33,9 +57,9 @@ public class DestroyPlanet : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        Debug.Log(col.gameObject.tag);
         if (col.gameObject.tag == "shot")
         {
-            Debug.Log("hit");
             if (col.gameObject.tag == "shot" && col.gameObject.GetComponent<Interactions>().onfire)
             {
                 burning = true;
@@ -70,7 +94,8 @@ public class DestroyPlanet : MonoBehaviour
             }
         }
         //instantiate some fancy particle system for special effects
-        Destroy(gameObject);  //destroy planet
+        GameObject clone = Instantiate(Explosion, transform.position, transform.rotation) as GameObject;        
+        Destroy(this.gameObject);  //destroy planet
     }
 
     void BurnDmg()
